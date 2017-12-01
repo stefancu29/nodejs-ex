@@ -4,10 +4,16 @@ var express = require('express'),
 //    mosca   = require('mosca'),
     morgan  = require('morgan');
 
+var mqtt = require('mqtt')
+var client  = mqtt.connect('mqtt://10.123.123.8')
+
+const WebSocket = require('ws');
+
 Object.assign=require('object-assign')
 
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'))
+
 
 
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080,
