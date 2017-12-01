@@ -1,7 +1,7 @@
 //  OpenShift sample Node application
 var express = require('express'),
     app     = express(),
-    mosca   = require('mosca'),
+//    mosca   = require('mosca'),
     morgan  = require('morgan');
 
 Object.assign=require('object-assign')
@@ -58,28 +58,31 @@ var initDb = function(callback) {
   });
 };
 
-var server = new mosca.Server(settings);
 
-server.on('clientConnected', function(client) {
-    console.log('client connected', client.id);
-});
+// var settings = {
+//   port: 1883,
+//   backend: ascoltatore
+// };
+//
+// var server = new mosca.Server(settings);
+//
+// server.on('clientConnected', function(client) {
+//     console.log('client connected', client.id);
+// });
+//
+// // fired when a message is received
+// server.on('published', function(packet, client) {
+//   console.log('Published', packet.payload);
+// });
+//
+// server.on('ready', setup);
+//
+// // fired when the mqtt server is ready
+// function setup() {
+//   console.log('Mosca server is up and running');
+// }
 
-// fired when a message is received
-server.on('published', function(packet, client) {
-  console.log('Published', packet.payload);
-});
 
-server.on('ready', setup);
-
-// fired when the mqtt server is ready
-function setup() {
-  console.log('Mosca server is up and running');
-}
-
-var settings = {
-  port: 1883,
-  backend: ascoltatore
-};
 
 
 app.get('/', function (req, res) {
