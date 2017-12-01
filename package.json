@@ -12,7 +12,7 @@
     "mongodb": "^2.1.16",
     "morgan": "^1.7.0",
     "object-assign":"4.1.0",
-    "mosca": "~2.7.0"
+    "mosca": "*"
   },
   "engine": {
     "node": "*",
@@ -24,12 +24,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://github.com/openshift/nodejs-ex.git"
+    "url": "http://github.com/stefancu29/nodejs-ex.git"
   },
-  "author": "Steve Speicher <sspeiche@gmail.com>",
-  "license": "CC-BY-1.0",
+  "author": "STefan Kupfer <stefan.kupfer@gmx.net>",
+  "license": "MIT",
   "bugs": {
     "url": "http://github.com/openshift/nodejs-ex/issues"
   },
-  "homepage": "http://github.com/openshift/nodejs-ex"
+  "homepage": "http://github.com/stefancu29/nodejs-ex"
 }
