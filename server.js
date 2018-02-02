@@ -12,7 +12,7 @@ var client  = mqtt.connect('mqtt://' + RPIADDRESS);
 
 const WebSocket = require('ws');
 
-Object.assign=require('object-assign'):
+Object.assign=require('object-assign');
 
 app.engine('html', require('ejs').renderFile);
 app.use(morgan('combined'));
