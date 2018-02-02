@@ -1,0 +1,74 @@
+<script>
+    var ws = new WebSocket('ws://localhost:40510');
+
+    // event emmited when connected
+    ws.onopen = function () {
+        console.log('websocket is connected ...')
+
+        // sending a send event to websocket server
+        ws.send('connected')
+    }
+
+    // event emmited when receiving message
+    ws.onmessage = function (ev) {
+        console.log(ev);
+    }
+</script>
+
+<!doctype html>
+
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>The HTML5 Herald</title>
+  <meta name="description" content="The HTML5 Herald">
+  <meta name="author" content="SitePoint">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    var ws = new WebSocket('ws://localhost:40510');
+    var ws2 = new WebSocket('ws://localhost:40511');
+
+    // event emmited when connected
+    ws.onopen = function () {
+        console.log('websocket is connected ...')
+
+        // sending a send event to websocket server
+        ws.send('connected')
+    }
+
+    // event emmited when receiving message
+    ws.onmessage = function (ev) {
+        //console.log(ev.data);
+        $("#time").text(ev.data);
+    }
+
+    // event emmited when connected
+    ws2.onopen = function () {
+        console.log('websocket 2 is connected ...')
+
+        // sending a send event to websocket server
+        ws2.send('ws 2 connected')
+    }
+
+    // event emmited when receiving message
+    ws2.onmessage = function (ev) {
+        //console.log(ev.data);
+        $("#temp").text(ev.data);
+    }
+  </script>
+</head>
+
+<body>
+    <h1>Hello World</h1>
+    <p id="time">There should be the time</p>
+    <p id="temp">There should be the temperature</p>
+  <!-- <script src="js/scripts.js"></script> -->
+</body>
+</html>

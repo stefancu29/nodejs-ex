@@ -4,15 +4,18 @@ var express = require('express'),
 //    mosca   = require('mosca'),
     morgan  = require('morgan');
 
-var mqtt = require('mqtt')
-var client  = mqtt.connect('mqtt://10.123.123.8')
+const RPIADDRESS =  "62.178.127.158";
+
+
+var mqtt = require('mqtt');
+var client  = mqtt.connect('mqtt://' + RPIADDRESS);
 
 const WebSocket = require('ws');
 
-Object.assign=require('object-assign')
+Object.assign=require('object-assign'):
 
 app.engine('html', require('ejs').renderFile);
-app.use(morgan('combined'))
+app.use(morgan('combined'));
 
 
 
@@ -109,6 +112,9 @@ app.get('/', function (req, res) {
   }
 });
 
+app.get('/temp', function (req, res) {
+    res.sendFile('ws.html');
+});
 app.get('/pagecount', function (req, res) {
   // try to initialize the db on every request if it's not already
   // initialized.
