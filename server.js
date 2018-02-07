@@ -1,20 +1,17 @@
 //  OpenShift sample Node application
 var express = require('express'),
     app     = express(),
-//    mosca   = require('mosca'),
+    mosca   = require('mosca'),
     morgan  = require('morgan');
-
-const RPIADDRESS =  "62.178.127.158";
-
-
-var mqtt = require('mqtt');
-var client  = mqtt.connect('mqtt://' + RPIADDRESS);
+var path = require('path');
 
 const WebSocket = require('ws');
 
 Object.assign=require('object-assign');
 
 app.engine('html', require('ejs').renderFile);
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'html');
 app.use(morgan('combined'));
 
 
@@ -112,8 +109,43 @@ app.get('/', function (req, res) {
   }
 });
 
+const wss = new WebSocket.Server({port: 40510})
+const wss2 = new WebSocket.Server({port: 40511})
+
+wss.on('connection', function (ws) {
+  ws.on('message', function (message) {
+    console.log('received: %s', message)
+  })
+
+  setInterval(
+    () => ws.send(`${new Date()}`),
+    30000
+  )
+  ws.on('close', function() {
+    console.log('closing connection');
+  });
+})
+
+wss2.on('connection', function (ws) {
+  ws.on('message', function (message) {
+    console.log('ws2 received: %s', message)
+  })
+
+  ws.on('close', function() {
+    console.log('closing ws2 connection');
+  });
+})
+// Broadcast to all.
+wss2.broadcast = function broadcast(data) {
+  wss2.clients.forEach(function each(client) {
+    if (client.readyState === WebSocket.OPEN) {
+      client.send(data);
+    }
+  });
+};
+
 app.get('/temp', function (req, res) {
-    res.sendFile('ws.html');
+    res.render('ws.html', null);
 });
 app.get('/pagecount', function (req, res) {
   // try to initialize the db on every request if it's not already
