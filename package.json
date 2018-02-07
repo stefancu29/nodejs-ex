@@ -9,7 +9,7 @@
     "ejs": "^2.4.1",
     "express": "^4.13.4",
     "mocha": "^2.4.5",
-    "mongodb": "^2.1.16",
+    "mongodb": "^2.2.19",
     "morgan": "^1.7.0",
     "mosca": "^2.7.0",
     "mqtt": "*",
@@ -29,7 +29,7 @@
     "type": "git",
     "url": "http://github.com/stefancu29/nodejs-ex.git"
   },
-  "author": "STefan Kupfer <stefan.kupfer@gmx.net>",
+  "author": "stefancu29 <stefancu29@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "http://github.com/openshift/nodejs-ex/issues"
