@@ -5,6 +5,9 @@
   "main": "server.js",
   "dependencies": {
     "chai": "^3.5.0",
+    "mongodb": "^2.2.19",
+    "morgan": "^1.7.0",
+    "mosca": "^2.7.0",
     "chai-http": "^2.0.1",
     "ejs": "^2.4.1",
     "express": "^4.13.4",
